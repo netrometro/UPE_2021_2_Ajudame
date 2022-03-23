@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+	<h1>Questionario</h1>
+
+	<form id="form-1">
+		<input type="text" id="tema" name="tema"
+			placeholder="Insira o tema do questionário">
+
+	</form>
+	<input type="text" id="pergunta" value="insira a pergunta"
+		onfocus="this.value='';" />
+	<input type="text" id="resposta" value="insira a resposta"
+		onfocus="this.value='';" />
+
+	<input type="text" id="explicacao" value="insira a explicacao"
+		onfocus="this.value='';" />
+	<button onClick="adicionar()">Adicionar</button>
+
+	<div class="exibir">
+		<ul id="lista">
+		</ul>
+	</div>
+
+	<div class="exibir">
+		<ul id="lista2">
+		</ul>
+	</div>
+
+	<div class="exibir">
+		<ul id="lista3">
+		</ul>
+	</div>
+
+	<div>
+		<table>
+			<thead>
+				<tr>
+				<th>Id</th>
+				<th>Tema</th>
+				<th>Perguntas</th>
+				<th>Respostas</th>
+				<th>Explicação</th>
+				<th>Editar</th>
+				<th>Exluir</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<script>
+
+
+var perguntas = [""];
+var respostas = [""];
+var explicacao = [""];
+
+for (var i = 0; i < perguntas.length; i++) {
+  var lis = document.createElement('li');
+  lis.innerHTML = perguntas[i];
+  lista.appendChild(lis);
+
+  var lis2 = document.createElement('li');
+  lis2.innerHTML = respostas[i];
+  lista2.appendChild(lis2);
+
+  var lis3 = document.createElement('li');
+  lis3.innerHTML = explicacao[i];
+  lista3.appendChild(lis3);
+}
+
+//função para adicionar mais um nome à lista
+function adicionar() {
+  var coleta = document.getElementById("pergunta").value;
+  var coleta2 = document.getElementById("resposta").value;
+  var coleta3 = document.getElementById("explicacao").value;
+  var perguntaDig = document.createElement('li');
+  var respostaDig = document.createElement('li');
+  var explicacaoDig = document.createElement('li');
+
+  perguntas.push(coleta);
+  perguntaDig.innerHTML = coleta;
+  lista.appendChild(perguntaDig);
+
+  respostas.push(coleta2);
+  respostaDig.innerHTML = coleta2;
+  lista2.appendChild(respostaDig);
+
+  explicacao.push(coleta3);
+  explicacaoDig.innerHTML = coleta3;
+  lista3.appendChild(explicacaoDig);
+}
+    </script>
+
+</body>
+</html>
