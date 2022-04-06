@@ -22,7 +22,7 @@ public class RegisterUserController extends HttpServlet {
 					throws ServletException, IOException {
 		
 		
-		System.out.println(request.getAttribute("name"));
+		System.out.println(request.getParameter("name"));
 	
 	}
 }
