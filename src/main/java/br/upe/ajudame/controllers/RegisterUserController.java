@@ -2,6 +2,8 @@ package br.upe.ajudame.controllers;
 
 import java.io.IOException;
 
+import br.upe.ajudame.model.entities.User;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +25,17 @@ public class RegisterUserController extends HttpServlet {
 		
 		
 		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("password"));
+		System.out.println(request.getParameter("email"));
 	
+		User user = new User();
+		user.setName(request.getParameter("name"));
+		user.setPassword(request.getParameter("password"));
+		user.setEmail(request.getParameter("email"));
+		
+		request.setAttribute("user", user);
+		
+		RequestDispatcher despachar = request.getRequestDispatcher("/user.jsp");
+		despachar.forward(request, response);
 	}
 }
