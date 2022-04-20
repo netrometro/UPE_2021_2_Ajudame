@@ -13,9 +13,13 @@ public class ConnectionPostgres {
     private final String PASSWORD = "";
     private final String DB = "ajudame1";
 
-	private Connection connect() throws SQLException, ClassNotFoundException {
+	public Connection connect() throws SQLException, ClassNotFoundException {
 		Class.forName("org.postgresql.Driver");
-		Connection connection = DriverManager.getConnection(URL + DB, USER, PASSWORD);
+		//Connection connection = DriverManager.getConnection(URL + DB, USER, PASSWORD);
+		
+		System.out.println(System.getenv("DATABASE_URL"));
+		
+		Connection connection = DriverManager.getConnection(System.getenv("DATABASE_URL"));
 		
 		return connection;
 	}

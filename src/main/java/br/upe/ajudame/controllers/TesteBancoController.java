@@ -26,7 +26,7 @@ public class TesteBancoController extends HttpServlet {
 		
 		System.out.println("GET:: Banco");
 		
-		/*// TESTA A CONECÇÃO COM O BANCO
+		//*// TESTA A CONECÇÃO COM O BANCO
 		try {
 			ConnectionPostgres c = new ConnectionPostgres();
 			c.connect();
@@ -45,7 +45,7 @@ public class TesteBancoController extends HttpServlet {
 		userMigration.refresh();
 		//*/
 		
-		//*/
+		/*/
 		userMigration.populate();
 		//*/
 	}
