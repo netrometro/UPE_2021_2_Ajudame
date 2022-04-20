@@ -8,13 +8,14 @@ import java.sql.Statement;
 
 public class ConnectionPostgres {
 
-    private final String url = "jdbc:postgresql://localhost/template1";
-    private final String user = "netro";
-    private final String password = "";
+    private final String URL = "jdbc:postgresql://localhost/";
+    private final String USER = "netro";
+    private final String PASSWORD = "";
+    private final String DB = "ajudame1";
 
 	private Connection connect() throws SQLException, ClassNotFoundException {
 		Class.forName("org.postgresql.Driver");
-		Connection connection = DriverManager.getConnection(url, user, password);
+		Connection connection = DriverManager.getConnection(URL + DB, USER, PASSWORD);
 		
 		return connection;
 	}
@@ -24,6 +25,9 @@ public class ConnectionPostgres {
 		
 		Statement statement = conn.createStatement();
 		statement.execute(sql);
+		
+		statement.close();
+		conn.close();
 	}
 	
 	public void queryPrepared(String sql, String[] data) throws SQLException, ClassNotFoundException {
@@ -35,5 +39,8 @@ public class ConnectionPostgres {
 		}
 		
 		preparedStatement.executeUpdate();
+		
+		preparedStatement.close();
+		conn.close();
 	}
 }

@@ -1,12 +1,15 @@
 package br.upe.ajudame.controllers;
 
-import jakarta.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import br.upe.ajudame.model.repositories.ConnectionPostgres;
+import br.upe.ajudame.model.repositories.UserMigration;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import br.upe.ajudame.model.repositories.UserMigration;
 
 @WebServlet("/banco")
 public class TesteBancoController extends HttpServlet {
@@ -20,7 +23,9 @@ public class TesteBancoController extends HttpServlet {
 			HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		System.out.println("Get");
+		
+		System.out.println("GET:: Banco");
+		
 		/*// TESTA A CONECÇÃO COM O BANCO
 		try {
 			ConnectionPostgres c = new ConnectionPostgres();
@@ -36,7 +41,7 @@ public class TesteBancoController extends HttpServlet {
 		userMigration.migrate();
 		//*/
 
-		//*/
+		/*/
 		userMigration.refresh();
 		//*/
 		

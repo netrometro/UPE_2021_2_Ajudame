@@ -13,10 +13,11 @@ public class UserMigration {
 	public void migrate() {
 		try {
 			repository.query("CREATE TABLE users " +
-			        "(ID SERIAL PRIMARY KEY ," +
-			        " NAME VARCHAR, " +
-			        " EMAIL VARCHAR(50), " +
-			        " PASSWORD VARCHAR(50));");
+			        "(id SERIAL PRIMARY KEY ," +
+			        " name VARCHAR, " +
+			        " email VARCHAR(50), " +
+			        " password VARCHAR(50)" +
+			        ");");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -24,7 +25,7 @@ public class UserMigration {
 	
 	public void refresh() {
 		try {
-			repository.query("DROP TABLE users;");
+			repository.query("DROP TABLE IF EXISTS users;");
 			this.migrate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -32,11 +33,16 @@ public class UserMigration {
 	}
 	
 	public void populate() {
-		String[] data = { "Fulano", "fulano@email.com", "123" };
 		try {
-			repository.queryPrepared("INSERT INTO users" +
-			        "  (name, email, password) VALUES " +
-			        " (?, ?, ?);", data );
+			String[][] data = { 
+					{ "Fulano", "fulano@email.com", "123" },
+					{ "Pedro de Alcântara Francisco Antônio João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon", "pedro.alcantara@email.com", "111" }
+				};
+			for (String[] d : data) {
+				repository.queryPrepared("INSERT INTO users" +
+				        "  (name, email, password) VALUES " +
+				        " (?, ?, ?);", d );
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
