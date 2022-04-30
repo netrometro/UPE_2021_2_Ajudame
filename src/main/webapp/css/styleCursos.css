@@ -1,0 +1,112 @@
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: radial-gradient( #2c1650 0%, #000001 100%);
+}
+
+.searchMenu{
+    border-radius: 5px;
+    height: 20px;
+
+}
+
+.menu_add{
+    padding-right: 5px;
+    height: 30px;
+    width: 30px;
+    filter: invert(100%);
+}
+
+.menu_login{
+    padding-left: 5px;
+    height: 30px;
+    width: 30px;
+    filter: invert(100%);
+}
+
+body{
+    font-family: sans-serif;
+    background: radial-gradient( #393FA2 0%, #140777 100%);
+}
+
+.aluno{
+    background: radial-gradient( #191c62 0%, #070514 100%);
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.prof{
+    background: radial-gradient( #191c62 0%, #070514 100%);
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+h1{
+	font-size: 35px;
+    color: #fff;
+}
+
+h2 {
+	font-size: 22px;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+}
+
+h3 {
+    text-align: left;
+    padding-left: 5%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+
+.cards__item {
+    display: inline-block;
+    background-color:rgb(255, 255, 255);
+    border-radius: 5%;
+}
+
+img {
+    max-width: 30px;
+    height: 30px;
+    padding-left: 80%;
+    transform: translate(0px, -50px);
+   }
+
+.card_description{
+    transform: translate(0px, -55px);
+    position: relative;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+    overflow: auto;
+    color: black;
+}
+
+p{
+    position: relative;
+    padding-left: 5px;
+    font-style: italic;
+    font-size: 12px;
+    color: #fff;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    background-color: #272727;
+    width: 99%; 
+}
