@@ -1,11 +1,21 @@
 package br.upe.ajudame.model.entities;
 
 public class User {
+
 	private int id;
 	private String name;
 	private String email;
 	private String password;
 	
+	public User() {}
+	
+	public User(String name, String email, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -30,4 +40,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}	
+
 }
+ 

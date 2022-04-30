@@ -3,9 +3,9 @@ package br.upe.ajudame.model.repositories;
 import java.sql.SQLException;
 
 public class UserMigration {
-	
+
 	private ConnectionPostgres repository;
-	
+
 	public UserMigration() {
 		repository = new ConnectionPostgres();
 	}

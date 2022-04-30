@@ -13,11 +13,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/banco")
-public class TesteBancoController extends HttpServlet {
+@WebServlet("/bancoQuestionario")
+public class TesteBancoQuestionarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public TesteBancoController() {
+    public TesteBancoQuestionarioController() {
         super();
     }
 
@@ -37,20 +37,31 @@ public class TesteBancoController extends HttpServlet {
 		}
 		//*/
 		
-
-		UserMigration userMigration = new UserMigration();
-		/*/
-		userMigration.migrate();
+		
+		QuestionarioMigration questionarioMigration = new QuestionarioMigration();
+		
 		//*/
-
-		/*/
-		userMigration.refresh();
+		  questionarioMigration.migrate();
 		//*/
 		
-		/*/
-		userMigration.populate();
+		/*/ Não consigue fazer funcionar o Populate! Apenas as outras funções funcionam.
+		  questionarioMigration.populate();
 		//*/
-
+		
+		QuestaoMigration questaoMigration = new QuestaoMigration();
+		
+		/*/ 
+		 questaoMigration.migrate();
+		//*/
+		
+		/*/ 
+		 questaoMigration.refresh();
+		//*/
+				
+		/*/ 
+		 questaoMigration.migrateAlternativas();;
+		//*/
+		
 	}
 
 	protected void doPost(
@@ -61,3 +72,4 @@ public class TesteBancoController extends HttpServlet {
 	}
 
 }
+

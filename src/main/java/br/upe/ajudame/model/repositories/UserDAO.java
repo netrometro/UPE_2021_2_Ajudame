@@ -10,6 +10,7 @@ import br.upe.ajudame.model.entities.User;
 public class UserDAO {
 	
 	private ConnectionPostgres repository;
+
 	
 	public UserDAO() {
 		repository = new ConnectionPostgres();
@@ -51,5 +52,4 @@ public class UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

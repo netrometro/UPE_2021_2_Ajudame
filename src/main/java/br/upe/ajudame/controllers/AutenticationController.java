@@ -21,7 +21,7 @@ public class AutenticationController extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Testando novamente para ver se pega: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
