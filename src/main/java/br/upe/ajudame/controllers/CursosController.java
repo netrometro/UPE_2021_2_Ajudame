@@ -2,6 +2,8 @@ package br.upe.ajudame.controllers;
 
 import java.io.IOException;
 
+import br.upe.ajudame.model.entities.Cursos;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +23,7 @@ public class CursosController extends HttpServlet{
 			HttpServletResponse resp) 
 					throws ServletException, IOException 
 		{
-			super.doGet(req, resp);
+		resp.getWriter().append("Criando um Questionario para o projeto!");
 		}
 	
 	
@@ -30,7 +32,20 @@ public class CursosController extends HttpServlet{
 			HttpServletResponse resp) 
 					throws ServletException, IOException 
 		{
-			super.doPost(req, resp);
+
+			String nomeCurso = req.getParameter("nameCurso");
+			String description = req.getParameter("description");
+		
+			Cursos curso = new Cursos();
+			
+			curso.setNameCurso(nomeCurso);
+			curso.setDescription(description);
+			
+			req.setAttribute("curso", curso);
+			
+			//Falta criar uma pagina para adicionar novos cursos, a mesma deve conter um "innerHTML" ou algo parecido.
+			RequestDispatcher despachar = req.getRequestDispatcher("/Cursos.jsp");
+			despachar.forward(req, resp);
 		}
 	
 	protected void doPut(
@@ -38,7 +53,7 @@ public class CursosController extends HttpServlet{
 			HttpServletResponse resp) 
 					throws ServletException, IOException 
 		{
-			super.doPut(req, resp);
+			
 		}
 	
 	protected void doDelete(
@@ -46,6 +61,6 @@ public class CursosController extends HttpServlet{
 			HttpServletResponse resp) 
 					throws ServletException, IOException 
 	{
-		super.doDelete(req, resp);
+		
 	}
 }
