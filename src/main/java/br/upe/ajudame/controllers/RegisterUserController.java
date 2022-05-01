@@ -2,7 +2,7 @@ package br.upe.ajudame.controllers;
 
 import java.io.IOException;
 
-import br.upe.ajudame.model.entities.User;
+import br.upe.ajudame.model.entities.Gamificacao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,18 +24,18 @@ public class RegisterUserController extends HttpServlet {
 					throws ServletException, IOException {
 		
 		
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("password"));
-		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("nome"));
+		System.out.println(request.getParameter("pontos"));
+		System.out.println(request.getParameter("acao"));
 	
-		User user = new User();
-		user.setName(request.getParameter("name"));
-		user.setPassword(request.getParameter("password"));
-		user.setEmail(request.getParameter("email"));
+		Gamificacao game = new Gamificacao();
+		game.setNome(request.getParameter("name"));
+		game.setPontos(request.getParameter("pontos"));
+		game.setAcao(request.getParameter("acao"));
 		
-		request.setAttribute("user", user);
+		request.setAttribute("gamificacao", game);
 		
-		RequestDispatcher despachar = request.getRequestDispatcher("/user.jsp");
+		RequestDispatcher despachar = request.getRequestDispatcher("/gamificacao.jsp");
 		despachar.forward(request, response);
 	}
 }

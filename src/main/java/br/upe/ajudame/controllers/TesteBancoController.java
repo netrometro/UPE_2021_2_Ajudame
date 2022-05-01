@@ -37,7 +37,7 @@ public class TesteBancoController extends HttpServlet {
 		
 
 		UserMigration userMigration = new UserMigration();
-		/*/
+		//*/
 		userMigration.migrate();
 		//*/
 
@@ -45,7 +45,7 @@ public class TesteBancoController extends HttpServlet {
 		userMigration.refresh();
 		//*/
 		
-		/*/
+		//*/
 		userMigration.populate();
 		//*/
 	}
