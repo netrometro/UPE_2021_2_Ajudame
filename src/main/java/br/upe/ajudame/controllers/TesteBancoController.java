@@ -28,7 +28,7 @@ public class TesteBancoController extends HttpServlet {
 		
 		System.out.println("GET:: Banco");
 		
-		//*// TESTA A CONECÇÃO COM O BANCO
+		/*// TESTA A CONECÇÃO COM O BANCO
 		try {
 			ConnectionPostgres c = new ConnectionPostgres();
 			c.connect();
@@ -43,21 +43,13 @@ public class TesteBancoController extends HttpServlet {
 		userMigration.migrate();
 		//*/
 
-		/*/
+		//*/
 		userMigration.refresh();
 		//*/
 		
-		/*/
+		//*/
 		userMigration.populate();
 		//*/
 
 	}
-
-	protected void doPost(
-			HttpServletRequest request, 
-			HttpServletResponse response) 
-					throws ServletException, IOException {
-		System.out.println("Post");
-	}
-
 }

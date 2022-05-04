@@ -1,5 +1,7 @@
 package br.upe.ajudame.model.repositories;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,16 +11,25 @@ import br.upe.ajudame.model.entities.User;
 
 public class UserDAO {
 	
-	private ConnectionPostgres repository;
-
+	private ConnectionPostgres postgres;
 	
 	public UserDAO() {
-		repository = new ConnectionPostgres();
+		postgres = new ConnectionPostgres();
 	}
 
-	public void add(User user) {
-		// TODO Auto-generated method stub
+	public void add(User user) throws ClassNotFoundException, SQLException {
+		Connection conn = postgres.connect();
+		
+		String sql = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
 
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, user.getName());
+		ps.setString(2, user.getEmail());
+		ps.setString(3, user.getPassword());
+		ps.execute();
+
+		ps.close();
+		conn.close();
 	}
 
 	public void remove(User user) {
@@ -32,8 +43,13 @@ public class UserDAO {
 	}
 
 	public List<User> list() throws ClassNotFoundException, SQLException {
+		Connection conn = postgres.connect();
+
 		String sql = "SELECT * FROM users";
-		ResultSet rs = repository.queryResult(sql);
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
 		
 		ArrayList<User> lista = new ArrayList<User>();
 		while (rs.next()) {
@@ -45,11 +61,37 @@ public class UserDAO {
 			lista.add(user);
 		}
 		
+		ps.close();
+		rs.close();
+		conn.close();
+		
 		return lista;
 	}
 
-	public List<User> searchByName(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> searchByName(String name) throws ClassNotFoundException, SQLException {
+		Connection conn = postgres.connect();
+
+		String sql = "SELECT * FROM users WHERE name LIKE '%?%'";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, name);
+		ResultSet rs = ps.executeQuery();
+		
+		
+		ArrayList<User> lista = new ArrayList<User>();
+		while (rs.next()) {
+			User user = new User();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("name"));
+			user.setEmail(rs.getString("email"));
+			
+			lista.add(user);
+		}
+		
+		ps.close();
+		rs.close();
+		conn.close();
+		
+		return lista;
 	}
 }

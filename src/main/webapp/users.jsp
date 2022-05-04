@@ -14,6 +14,14 @@
 	
 	<body>
 		<h1>Ajudame</h1>
+		<h2>Adicionar usuário</h2>
+		<form action="add" method="post">
+			<input type="text" id="name" name="name" placeholder="Digite o nome de usuário" /><br />
+			<input type="text" id="email" name="email" placeholder="Digite o email" /><br />
+			<input type="password" id="pass" name="pass" placeholder="Digite uma senha" /><br />
+			<input type="submit" value="Adicionar" />
+		</form>
+		
 		<h2>Lista de Usuários</h2>
 		<table border=1>
 			<thead>

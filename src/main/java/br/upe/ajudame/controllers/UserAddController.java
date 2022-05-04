@@ -13,31 +13,37 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/list")
-public class UserListController extends HttpServlet {
+@WebServlet("/user/add")
+public class UserAddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public UserListController() {
+    public UserAddController() {
         super();
     }
 
-	protected void doGet(
+	protected void doPost(
 			HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		System.out.println("GET:: User List");
-		
-		try {
-			UserDAO dao = new UserDAO();
-			ArrayList<User> lista = (ArrayList<User>) dao.list();
+		System.out.println("POST:: User Add");
 
-			request.setAttribute("users", lista);
-			System.out.println(lista.get(0).getEmail());
-			RequestDispatcher despachar = request.getRequestDispatcher("/users.jsp");
-			despachar.forward(request, response);
+		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("pass"));
+		
+		User user = new User();
+		user.setName(request.getParameter("name"));
+		user.setEmail(request.getParameter("email"));
+		user.setPassword(request.getParameter("pass"));
+		
+		UserDAO dao = new UserDAO();
+		try {
+			dao.add(user);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		response.sendRedirect("list");
 	}
 }
