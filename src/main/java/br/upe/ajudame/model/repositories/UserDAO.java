@@ -68,7 +68,8 @@ public class UserDAO {
 		return lista;
 	}
 
-	public List<User> searchByName(String name) throws ClassNotFoundException, SQLException {
+	public List<User> searchByName(String name) 
+			throws ClassNotFoundException, SQLException {
 		Connection conn = postgres.connect();
 
 		String sql = "SELECT * FROM users WHERE name LIKE '%?%'";
@@ -93,5 +94,32 @@ public class UserDAO {
 		conn.close();
 		
 		return lista;
+	}
+
+	public User autentication(String email, String password) 
+			throws ClassNotFoundException, SQLException {
+		
+		Connection conn = postgres.connect();
+
+		String sql = "SELECT * FROM users WHERE emaiL=? and password=?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, email);
+		ps.setString(2, password);
+		ResultSet rs = ps.executeQuery();
+		
+		User user = null;
+		while (rs.next()) {
+			user = new User();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("name"));
+			user.setEmail(rs.getString("email"));
+		}
+		
+		ps.close();
+		rs.close();
+		conn.close();
+		
+		return user;
 	}
 }

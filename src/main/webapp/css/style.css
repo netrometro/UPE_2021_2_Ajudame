@@ -1,7 +1,80 @@
-h2 {
-	color: blue;
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Roboto:wght@400;700&display=swap');
+
+html, body {
+	height: 100vh;
 }
 
-table, tr, td, th {
-	border: 1px solid black;
+body {
+	background-image: url("../img/bg.jpg");
+	
+	margin: 0px;
+	padding: 5px;
+}
+
+p, td, a, input {
+	font-family: Roboto, sans-serif;
+}
+
+input {
+	width: calc(100% - 20px);
+	
+	margin: 5px;
+	padding: 5px;
+	
+	background-color: white;
+	opacity: 0.7;
+}
+
+input[type=submit] {
+	background-color: white;
+	opacity: 1;
+	
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.topbar, .bottombar, .card {	
+	margin: 5px;
+	padding: 5px;
+	
+	background-color: white;
+	opacity: 0.7;
+}
+
+.bottombar {
+	width: calc(100% - 30px);
+	height: 10px;
+	
+	position: absolute;
+	bottom: 0px;
+}
+
+.brand {
+	margin: 0px;
+	padding: 5px;
+	
+	font-family: koulen;
+}
+
+.content {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.card {
+	width: 400px;
+	height: 500px;
+	
+	background-color: white;
+	opacity: 0.7;
+}
+
+.card-title {
+	font-family: koulen;
+	text-align: center;
+}
+
+.card-content {
+	
 }
