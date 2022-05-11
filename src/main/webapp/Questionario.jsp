@@ -8,6 +8,11 @@
 </head>
 <body>
 
+	<form action="">
+		<input type="text" id="tema" name="tema" />
+		<input type="submit" value="Buscar"/>
+	</form>
+
 	<h1>Questionario</h1>
 	<p>Tema: ${ questionario.tema }</p>
 	<p>Total de Acertos: ${questionario.totalAcertos }</p>

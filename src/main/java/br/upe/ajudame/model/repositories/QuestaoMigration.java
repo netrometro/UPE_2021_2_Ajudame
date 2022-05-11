@@ -1,18 +1,21 @@
 package br.upe.ajudame.model.repositories;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class QuestaoMigration {
 	
-	private ConnectionPostgres repository;
+	private ConnectionPostgres postgres;
 	
 	public QuestaoMigration() {
-		repository = new ConnectionPostgres();
+		postgres = new ConnectionPostgres();
 	}
 	
 	public void migrate() {
 		try {
-			repository.query("CREATE TABLE questoes" +
+			Connection conn = postgres.connect();
+			String sql = ("CREATE TABLE questoes" +
 					"(id SERIAL PRIMARY KEY ," +
 					"pergunta VARCHAR ," +
 					"resposta VARCHAR ," +
@@ -20,6 +23,11 @@ public class QuestaoMigration {
 					"questionario_id INTEGER NOT NULL ," +
 					"CONSTRAINT fk_questionario FOREIGN KEY (questionario_id) REFERENCES questionario(id)" +
 					");");
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+			
+			ps.close();
+			conn.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -27,12 +35,18 @@ public class QuestaoMigration {
 	
 	public void migrateAlternativas() {
 		try {
-			repository.query("CREATE TABLE alternativas" +
+			Connection conn = postgres.connect();
+			String sql = ("CREATE TABLE alternativas" +
 					"(id SERIAL PRIMARY KEY ," +
 					"alternativa VARCHAR ," +
 					"questao_id INTEGER NOT NULL ," +
 					"CONSTRAINT fk_questao_alternativa FOREIGN KEY (questao_id) REFERENCES questoes(id)" +
 					");");
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+			
+			ps.close();
+			conn.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +54,11 @@ public class QuestaoMigration {
 	
 	public void refresh() {
 		try {
-			repository.query("DROP TABLE IF EXISTS questionario;");
+			Connection conn = postgres.connect();
+			String sql = "DROP TABLE IF EXISTS questao;";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+			
 			this.migrate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

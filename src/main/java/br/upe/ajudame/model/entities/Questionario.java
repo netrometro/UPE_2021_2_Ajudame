@@ -30,6 +30,8 @@ public class Questionario {
 	
 	private User user;
 	
+	private Cursos curso;
+	
 	private Integer totalAcertos;
 	private Integer totalErros;
 	
@@ -38,6 +40,8 @@ public class Questionario {
 	public Questionario(String tema, User user) {
 		this.tema = tema;
 		this.user = user;
+		this.totalAcertos = 0;
+		this.totalErros = 0;
 	}
 	
 	public Integer getId() {
@@ -90,6 +94,16 @@ public class Questionario {
 
 	public void CriarPerguntas(Questao questao) {
 		this.questoes.add(questao);
+	}
+	
+	public Questao retornarQuestao() {
+		Questao questao = new Questao();
+		for (int i = 0; i < this.questoes.size(); i++) {
+			if (questoes != null) {
+				questao = this.getQuestoes().get(i);
+			}
+		}
+		return questao;
 	}
 	
 	//Concluir implementação do Metodo

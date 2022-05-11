@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Questao{
 	
+	private Integer id;
 	private String pergunta;
 	private List<String> alternativas = new ArrayList<String>();
 	private String resposta;
@@ -17,6 +18,14 @@ public class Questao{
 		this.alternativas = alternativas;
 		this.resposta = resposta;
 		this.explicação = explicação;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getPergunta() {
@@ -49,6 +58,10 @@ public class Questao{
 
 	public void setExplicação(String explicação) {
 		this.explicação = explicação;
+	}
+	
+	public void adicionarAlternativas(String alternativa) {
+		this.alternativas.add(alternativa);
 	}
 
 	@Override

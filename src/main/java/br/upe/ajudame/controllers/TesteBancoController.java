@@ -16,40 +16,65 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/banco")
 public class TesteBancoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public TesteBancoController() {
-        super();
-    }
 
-	protected void doGet(
-			HttpServletRequest request, 
-			HttpServletResponse response) 
-					throws ServletException, IOException {
-		
+	public TesteBancoController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		System.out.println("GET:: Banco");
-		
-		/*// TESTA A CONECÇÃO COM O BANCO
-		try {
-			ConnectionPostgres c = new ConnectionPostgres();
-			c.connect();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		//*/
-		
+
+		/*
+		 * // TESTA A CONECÇÃO COM O BANCO try { ConnectionPostgres c = new
+		 * ConnectionPostgres(); c.connect(); } catch (SQLException |
+		 * ClassNotFoundException e) { e.printStackTrace(); } //
+		 */
 
 		UserMigration userMigration = new UserMigration();
-		/*/
-		userMigration.migrate();
-		//*/
+		/*
+		 * / userMigration.migrate(); //
+		 */
 
-		//*/
+		// */
 		userMigration.refresh();
-		//*/
-		
-		//*/
-		userMigration.populate();
-		//*/
+		// */
 
+		// */
+		userMigration.populate();
+		// */
+
+		// */
+
+		QuestionarioMigration questionarioMigration = new QuestionarioMigration();
+
+		//*/
+			questionarioMigration.migrate();
+		/**/
+		
+		/*
+		 	questionarioMigration.refresh();
+		/**/
+		
+		/* 
+		  	questionarioMigration.populate();
+		/**/
+		
+		QuestaoMigration questaoMigration = new QuestaoMigration();
+
+		//*
+		  questaoMigration.migrate();
+		/**/
+
+		/*
+		 questaoMigration.refresh();
+		/**/
+
+		//*
+		 questaoMigration.migrateAlternativas();
+		/**/
+		 
+		
 	}
 }
