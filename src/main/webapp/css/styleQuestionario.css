@@ -9,12 +9,12 @@
 
 input {
 	width: 300px;
-	height: 30px;
+	height: 40px;
 	
 	text-align: center;
 }
 
 input:hover {
 	color: #488BB5;
-	background-color: #A9DAF5;
+	background-color: white;
 }

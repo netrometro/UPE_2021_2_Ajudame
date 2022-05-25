@@ -17,11 +17,11 @@ public class QuestaoMigration {
 			Connection conn = postgres.connect();
 			String sql = ("CREATE TABLE questoes" +
 					"(id SERIAL PRIMARY KEY ," +
-					"pergunta VARCHAR ," +
-					"resposta VARCHAR ," +
-					"explicacao VARCHAR ," +
+					"pergunta TEXT ," +
+					"resposta TEXT ," +
+					"explicacao TEXT ," +
 					"questionario_id INTEGER NOT NULL ," +
-					"CONSTRAINT fk_questionario FOREIGN KEY (questionario_id) REFERENCES questionario(id)" +
+					"CONSTRAINT fk_questionario FOREIGN KEY (questionario_id) REFERENCES questionario(id) ON DELETE CASCADE ON UPDATE CASCADE" +
 					");");
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();
@@ -40,7 +40,7 @@ public class QuestaoMigration {
 					"(id SERIAL PRIMARY KEY ," +
 					"alternativa VARCHAR ," +
 					"questao_id INTEGER NOT NULL ," +
-					"CONSTRAINT fk_questao_alternativa FOREIGN KEY (questao_id) REFERENCES questoes(id)" +
+					"CONSTRAINT fk_questao_alternativa FOREIGN KEY (questao_id) REFERENCES questoes(id) ON DELETE CASCADE ON UPDATE CASCADE" +
 					");");
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.execute();

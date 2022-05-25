@@ -14,7 +14,7 @@
 	</form>
 
 	<h1>Questionario</h1>
-	<p>Tema: ${ questionario.tema }</p>
+	<p>Tema: ${ questionario.curso }</p>
 	<p>Total de Acertos: ${questionario.totalAcertos }</p>
 	<p>Total de Erros: ${ questionario.totalErros }</p>
 	<p>Usuario: ${ user.name }</p>

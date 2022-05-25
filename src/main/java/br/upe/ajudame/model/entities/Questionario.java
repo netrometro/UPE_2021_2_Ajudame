@@ -25,7 +25,6 @@ import java.util.Random;
 public class Questionario {
 	
 	private Integer id;
-	private String tema;
 	private List<Questao> questoes = new ArrayList<Questao>();
 	
 	private User user;
@@ -37,8 +36,8 @@ public class Questionario {
 	
 	public Questionario() {}
 
-	public Questionario(String tema, User user) {
-		this.tema = tema;
+	public Questionario(Cursos curso, User user) {
+		this.curso = curso;
 		this.user = user;
 		this.totalAcertos = 0;
 		this.totalErros = 0;
@@ -51,13 +50,13 @@ public class Questionario {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public String getTema() {
-		return tema;
+	
+	public Cursos getCurso() {
+		return curso;
 	}
 
-	public void setTema(String tema) {
-		this.tema = tema;
+	public void setCurso(Cursos curso) {
+		this.curso = curso;
 	}
 
 	public List<Questao> getQuestoes() {
@@ -117,7 +116,7 @@ public class Questionario {
 			this.totalErros ++;
 			return "Você errou!" 
 					+ "\n Resposta: " + questaoRecebida.getResposta() 
-					+ "\n Explicação: " + questaoRecebida.getExplicação();
+					+ "\n Explicação: " + questaoRecebida.getExplicacao();
 		}
 	}
 	
@@ -135,7 +134,7 @@ public class Questionario {
 
 	@Override
 	public String toString() {
-		return "Quiz [tema=" + tema + ",\n questoes=" + questoes + ",\n usuario=" + user + ",\n totalAcertos="
-				+ totalAcertos + ", totalErros=" + totalErros + "]";
+		return "Questionario [id=" + id + ", questoes=" + questoes + ", user=" + user + ", curso=" + curso
+				+ ", totalAcertos=" + totalAcertos + ", totalErros=" + totalErros + "]";
 	}
 }

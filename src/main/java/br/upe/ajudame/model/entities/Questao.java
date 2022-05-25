@@ -7,17 +7,16 @@ public class Questao{
 	
 	private Integer id;
 	private String pergunta;
-	private List<String> alternativas = new ArrayList<String>();
+	private List<Alternativa> alternativas = new ArrayList<Alternativa>();
 	private String resposta;
-	private String explicação;
+	private String explicacao;
 	
 	public Questao() {}
 	
-	public Questao(String pergunta, List<String> alternativas, String resposta, String explicação) {
+	public Questao(String pergunta, String resposta, String explicacao) {
 		this.pergunta = pergunta;
-		this.alternativas = alternativas;
 		this.resposta = resposta;
-		this.explicação = explicação;
+		this.explicacao = explicacao;
 	}
 	
 	public Integer getId() {
@@ -36,11 +35,12 @@ public class Questao{
 		this.pergunta = pergunta;
 	}
 
-	public List<String> getAlternativas() {
+	
+	public List<Alternativa> getAlternativas() {
 		return alternativas;
 	}
 
-	public void setAlternativas(List<String> alternativas) {
+	public void setAlternativas(List<Alternativa> alternativas) {
 		this.alternativas = alternativas;
 	}
 
@@ -52,22 +52,22 @@ public class Questao{
 		this.resposta = resposta;
 	}
 
-	public String getExplicação() {
-		return explicação;
+	public String getExplicacao() {
+		return explicacao;
 	}
 
-	public void setExplicação(String explicação) {
-		this.explicação = explicação;
+	public void setExplicacao(String explicacao) {
+		this.explicacao = explicacao;
 	}
-	
-	public void adicionarAlternativas(String alternativa) {
+
+	public void adicionarAlternativas(Alternativa alternativa) {
 		this.alternativas.add(alternativa);
 	}
 
 	@Override
 	public String toString() {
 		return "Pergunta [pergunta=" + pergunta + ", alternativas=" + alternativas + ", resposta=" + resposta
-				+ ", explicação=" + explicação + "]";
+				+ ", explicação=" + explicacao + "]";
 	}
 
 }

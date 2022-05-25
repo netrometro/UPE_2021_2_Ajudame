@@ -11,7 +11,8 @@
 
 
 	<form action="/upe_20212_ajudame/questionario" method="post" class="formulario">
-		<input type="text" id="tema" name="tema" placeholder="insira o tema"/> </br>
+		<input type="hidden" id="userId" name="userId" value="1"/> 
+		<input type="text" id="curso" name="curso" placeholder="insira o curso"/> </br>
 		<input type="text" id="pergunta" name="pergunta" placeholder="insira a pergunta" /> </br>
 		<input type="text" id="resposta"name="resposta" placeholder="insira a resposta" /> </br>
 		<input type="text" id="explicacao" name="explicacao" placeholder="insira a explicacao" /> </br>
@@ -20,8 +21,12 @@
 		<input type="text" id="alternativa3" name="alternativa3" placeholder="alternativa C"/> </br>
 		<input type="text" id="alternativa4" name="alternativa4" placeholder="alternativa D"/> </br>
 		<input type="text" id="alternativa5" name="alternativa5" placeholder="alternativa E"/> </br>
-		<input type="submit" value="Criar" />
+		<input type="submit" value="Criar" /> </br>
 	</form>
+	
+	<div>
+		<a href="/upe_20212_ajudame/questionario/list">Listar Questionarios</a>
+	</div>
 
 
 </body>

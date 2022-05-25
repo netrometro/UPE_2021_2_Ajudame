@@ -33,8 +33,8 @@ public class QuestionarioListController extends HttpServlet{
 							ArrayList<Questionario> lista = (ArrayList<Questionario>) dao.list();
 							
 							request.setAttribute("questionarios", lista);
-							System.out.println(lista.get(0).getTema());
-							RequestDispatcher despachar = request.getRequestDispatcher("/Questionarios.jsp");
+							
+							RequestDispatcher despachar = request.getRequestDispatcher("/ListaQuestionarios.jsp");
 							despachar.forward(request, response);
 							
 						} catch (ClassNotFoundException | SQLException e) {

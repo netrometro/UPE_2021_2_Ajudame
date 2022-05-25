@@ -5,11 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.upe.ajudame.model.entities.Alternativa;
+import br.upe.ajudame.model.entities.Cursos;
 import br.upe.ajudame.model.entities.Questao;
 import br.upe.ajudame.model.entities.Questionario;
 import br.upe.ajudame.model.entities.User;
 import br.upe.ajudame.model.repositories.QuestaoDAO;
 import br.upe.ajudame.model.repositories.QuestionarioDAO;
+import br.upe.ajudame.model.repositories.UserDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,17 +27,17 @@ public class QuestionarioController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Criando um Questionario para o projeto!");
-
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String cursoRecebido = request.getParameter("curso");
+		
+		String userIdRecebido = request.getParameter("userId");
+		
+		int user = Integer.parseInt(userIdRecebido);
+		
 		Questionario questionario = new Questionario();
-		questionario.setTema(request.getParameter("tema"));
+		
 		questionario.setTotalAcertos(0);
 		questionario.setTotalErros(0);
 		
@@ -44,40 +47,55 @@ public class QuestionarioController extends HttpServlet {
 		
 		questao.setPergunta(request.getParameter("pergunta"));
 		questao.setResposta(request.getParameter("resposta"));
-		questao.setExplicação(request.getParameter("explicacao"));
-		questao.adicionarAlternativas(request.getParameter("alternativa1"));
-		questao.adicionarAlternativas(request.getParameter("alternativa2"));
-		questao.adicionarAlternativas(request.getParameter("alternativa3"));
-		questao.adicionarAlternativas(request.getParameter("alternativa4"));
-		questao.adicionarAlternativas(request.getParameter("alternativa5"));
+		questao.setExplicacao(request.getParameter("explicacao"));
+		
+		Alternativa alternativa = new Alternativa();
+		
+		alternativa.setAlternativa(request.getParameter("alternativa1"));
+		questao.adicionarAlternativas(alternativa);
+		
+		alternativa.setAlternativa(request.getParameter("alternativa2"));
+		questao.adicionarAlternativas(alternativa);
+		
+		alternativa.setAlternativa(request.getParameter("alternativa3"));
+		questao.adicionarAlternativas(alternativa);
+		
+		alternativa.setAlternativa(request.getParameter("alternativa4"));
+		questao.adicionarAlternativas(alternativa);
+		
+		alternativa.setAlternativa(request.getParameter("alternativa5"));
+		questao.adicionarAlternativas(alternativa);
+		
 		
 		questionario.CriarPerguntas(questao);
 		
-		User user = new User();
-		user.setId(1);
-		user.setName("fulano");
-		user.setEmail("fulano@gmail.com");
-		user.setPassword("112");
-		
-		questionario.setUser(user);
-		
-		QuestionarioDAO dao = new QuestionarioDAO();
+		QuestionarioDAO questionarioDAO = new QuestionarioDAO();
 		QuestaoDAO questaoDAO = new QuestaoDAO();
-		try {			
-			dao.add(questionario);
-			int buscaQuestionario = dao.searchQuestionario(questionario.getTema());
+		UserDAO userDAO = new UserDAO();
+		
+		try {	
+			Cursos buscarCurso = questionarioDAO.searchCurso(cursoRecebido);
+			questionario.setCurso(buscarCurso);
+			int idUser = user;
+			User buscarUser = questionarioDAO.searchByNameUser(idUser);
 			
-			System.out.println(buscaQuestionario);
+			questionario.setUser(buscarUser);
+			
+			questionarioDAO.add(questionario);
+			
+			int buscaQuestionario = questionarioDAO.searchQuestionario(questionario.getCurso().getId());
+			
+			
 			questaoDAO.add(questao, buscaQuestionario);
 			int buscaQuestao = questaoDAO.searchQuestao(questao.getPergunta());
 			
 			questaoDAO.addAlternativa(questao.getAlternativas(), buscaQuestao);
+			
+			response.sendRedirect("questionario.html");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} 
 		
-		response.sendRedirect("questionario");
-
 	}
 
 }
