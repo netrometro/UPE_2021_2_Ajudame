@@ -1,19 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Questionario</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="css/styleQuestionario.css" />
 </head>
 <body>
 
-	<h1 class="cabecalho">Criar Questionario</h1>
-	
+<h1 class="cabecalho">Criar Questionario</h1>
 	<p>${user.email}</p>
+	<div>
+		<a href="/upe_20212_ajudame/questionario/list">Listar Questionarios</a>
+	</div>
+	<div>
+		<a href="/upe_20212_ajudame/dashboard.jsp">Dashboard</a>
+	</div>
 
 
 	<form action="/upe_20212_ajudame/questionario" method="post" class="formulario">
-		<input type="hidden" id="userId" name="userId" value="1"/> 
+		<input type="hidden" id="userId" name="userId" value="${user.id}"/> 
 		<input type="text" id="curso" name="curso" placeholder="insira o curso"/> </br>
 		<input type="text" id="pergunta" name="pergunta" placeholder="insira a pergunta" /> </br>
 		<input type="text" id="resposta"name="resposta" placeholder="insira a resposta" /> </br>
@@ -26,9 +33,8 @@
 		<input type="submit" value="Criar" /> </br>
 	</form>
 	
-	<div>
-		<a href="/upe_20212_ajudame/questionario/list">Listar Questionarios</a>
-	</div>
+	
+
 
 
 </body>

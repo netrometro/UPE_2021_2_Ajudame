@@ -24,7 +24,12 @@
 			<nav>
 				<a href="usuario.html">Usuário</a>
 				<a href="forum.html">Fórum</a>
-				<a href="questionario.html">Questionário</a>
+				<form action="/upe_20212_ajudame/questionario/buscarUser" method="post" style="width: 200px;">
+					<input type="hidden" name="id" id="id" value="${user.id}" />
+					<input type="hidden" name="email" id="email" value="${user.email}" />
+					<input type="submit" style="color: blue" value="Questionario" />
+				</form>
+				
 				<a href="sair">SAIR</a>
 			</nav>
 		</div>

@@ -17,7 +17,7 @@ contentType="text/html; charset=ISO-8859-1"
 <h1>Ajudame</h1> </br>
 
 <h4>
-	<a href="/upe_20212_ajudame/questionario.html">Criar Questionario</a>
+	<a href="/upe_20212_ajudame/CadastrarQuestionario.jsp">Criar Questionario</a>
 </h4> </br>
 
 		<h2>Lista de Questionarios</h2>

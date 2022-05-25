@@ -50,22 +50,29 @@ public class QuestionarioController extends HttpServlet {
 		questao.setExplicacao(request.getParameter("explicacao"));
 		
 		Alternativa alternativa = new Alternativa();
-		
 		alternativa.setAlternativa(request.getParameter("alternativa1"));
 		questao.adicionarAlternativas(alternativa);
 		
+		alternativa = new Alternativa();
 		alternativa.setAlternativa(request.getParameter("alternativa2"));
 		questao.adicionarAlternativas(alternativa);
 		
+		alternativa = new Alternativa();
 		alternativa.setAlternativa(request.getParameter("alternativa3"));
 		questao.adicionarAlternativas(alternativa);
 		
+		alternativa = new Alternativa();
 		alternativa.setAlternativa(request.getParameter("alternativa4"));
 		questao.adicionarAlternativas(alternativa);
 		
+		alternativa = new Alternativa();
 		alternativa.setAlternativa(request.getParameter("alternativa5"));
 		questao.adicionarAlternativas(alternativa);
 		
+		System.out.println("Listando Altrenativas");
+		for (int i = 0; i < questao.getAlternativas().size(); i++) {
+			System.out.println(questao.getAlternativas().get(i).getAlternativa());
+		}
 		
 		questionario.CriarPerguntas(questao);
 		
@@ -91,7 +98,7 @@ public class QuestionarioController extends HttpServlet {
 			
 			questaoDAO.addAlternativa(questao.getAlternativas(), buscaQuestao);
 			
-			response.sendRedirect("questionario.html");
+			response.sendRedirect("CadastrarQuestionario.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} 

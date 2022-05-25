@@ -88,10 +88,7 @@ public class QuestaoAtualizarController extends HttpServlet {
 			QuestaoDAO questaoDAO = new QuestaoDAO();
 			questaoDAO.update(questao);
 			
-			
 			questaoDAO.updateAlternativas(alternativas);
-			
-			
 			
 			response.sendRedirect("/upe_20212_ajudame/questionario/questoes");
 		} catch (Exception e) {
