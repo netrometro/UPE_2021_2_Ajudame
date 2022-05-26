@@ -1,0 +1,70 @@
+header{
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+header, footer, .cards {	
+	margin: 5px;
+	padding: 5px;
+	background-color: white;
+	opacity: 0.7;
+}
+
+body {
+	background-image: url("../img/bg.jpg");
+	
+	margin: 0px;
+	padding: 5px;
+}
+
+.searchMenu{
+    border-radius: 5px;
+    height: 20px;
+
+}
+
+.menu_icon{
+    padding-left: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.listaCursos{
+    background-color: #e2e2e2;
+    opacity: 0.9;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+
+h1, h2, h3, p {
+	font-family: Roboto, sans-serif;
+	color: black;
+}
+
+h1{
+	font-size: 35px;
+}
+
+h2 {
+	font-size: 22px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+h3 {
+    text-align: left;
+    padding-left: 5%;
+}
+
+footer {
+	width: calc(100% - 30px);
+	position: absolute;
+	bottom: 0px;
+	align-items: left;
+}

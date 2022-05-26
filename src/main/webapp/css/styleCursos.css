@@ -1,39 +1,52 @@
 header{
-    width: 100%;
+    width: 98%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background: radial-gradient( #2c1650 0%, #000001 100%);
+}
+
+header, footer, .cards {	
+	margin: 5px;
+	padding: 5px;
+	background-color: white;
+	opacity: 0.7;
+}
+
+body {
+	background-image: url("../img/bg.jpg");
+	
+	margin: 0px;
+	padding: 5px;
+}
+
+.verCurso{
+	align-items: center;
+	margin: 15px;
+	padding: 5px;
+	background-color: rgb(255, 255, 255);
 }
 
 .searchMenu{
     border-radius: 5px;
     height: 20px;
-
 }
 
-.menu_add{
-    padding-right: 5px;
-    height: 30px;
-    width: 30px;
-    filter: invert(100%);
+button:hover {
+	color: #00ff00;
+	background-color: white;
 }
 
-.menu_login{
+.menu_icon{
     padding-left: 5px;
     height: 30px;
     width: 30px;
-    filter: invert(100%);
 }
 
-body{
-    font-family: sans-serif;
-    background: radial-gradient( #393FA2 0%, #140777 100%);
-}
 
 .aluno{
-    background: radial-gradient( #191c62 0%, #070514 100%);
+    background-color: #e2e2e2;
+    opacity: 0.9;
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
@@ -41,21 +54,25 @@ body{
 }
 
 .prof{
-    background: radial-gradient( #191c62 0%, #070514 100%);
+    background-color: #e2e2e2;
+    opacity: 0.9;
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
 }
 
+h1, h2, h3, p {
+	font-family: Roboto, sans-serif;
+	color: black;
+}
+
 h1{
 	font-size: 35px;
-    color: #fff;
 }
 
 h2 {
 	font-size: 22px;
-    color: #fff;
     text-align: center;
     padding-top: 10px;
 }
@@ -71,15 +88,19 @@ h3 {
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+    border-radius: 5%;
+    background-color: silver;
+    opacity: 0.7;
+    
 }
 
 .cards__item {
     display: inline-block;
-    background-color:rgb(255, 255, 255);
+    background-color: white;
     border-radius: 5%;
 }
 
-img {
+.card_img{
     max-width: 30px;
     height: 30px;
     padding-left: 80%;
@@ -96,17 +117,9 @@ img {
     color: black;
 }
 
-p{
-    position: relative;
-    padding-left: 5px;
-    font-style: italic;
-    font-size: 12px;
-    color: #fff;
-}
-
-footer{
-    position: absolute;
-    bottom: 0;
-    background-color: #272727;
-    width: 99%; 
+footer {
+	width: calc(100% - 30px);
+	position: absolute;
+	bottom: 0px;
+	align-items: left;
 }

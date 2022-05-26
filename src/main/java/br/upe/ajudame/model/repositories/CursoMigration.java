@@ -1,22 +1,30 @@
 package br.upe.ajudame.model.repositories;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CursoMigration {
-	
-	private ConnectionPostgres repository;
-	
+
+	private ConnectionPostgres postgres;
+
 	public CursoMigration() {
-		repository = new ConnectionPostgres();
+		postgres = new ConnectionPostgres();
 	}
 
 	public void migrate() {
 		try {
-			repository.query("CREATE TABLE cursos " +
+			Connection conn = postgres.connect();
+			String sql = "CREATE TABLE Cursos " +
 			        "(id SERIAL PRIMARY KEY ," +
 			        " nameCurso VARCHAR, " +
-			        " description VARCHAR(250), " +
-			        ");");
+			        " descricao VARCHAR(250), " +
+			        ");";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+			
+			ps.close();
+			conn.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -24,7 +32,11 @@ public class CursoMigration {
 	
 	public void refresh() {
 		try {
-			repository.query("DROP TABLE IF EXISTS cursos;");
+			Connection conn = postgres.connect();
+			String sql = "DROP TABLE IF EXISTS Cursos;";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.execute();
+			
 			this.migrate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -33,10 +45,26 @@ public class CursoMigration {
 	
 	public void populate() {
 		try {
-			System.out.println("Teste populate");
-		} catch (Exception e) {
-			System.out.println("Exception: " + e);
+			String[][] data = { 
+					{ "Java Web", "Aprenda desenvolvimento web com java." },
+					{ "GameDev Java", "Aprenda desenvolvimento de jogos em java com eclipse." }
+				};
+			Connection conn = postgres.connect();
+			String sql = "INSERT INTO Cursos" +
+			        "  (nameCurso, descricao) VALUES " +
+			        " (?, ?);";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			for (String[] d : data) {
+				ps.setString(1, d[0]);
+				ps.setString(2, d[1]);
+				ps.execute();
+			}
+			
+			ps.close();
+			conn.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 		}
 	}
-	
 }

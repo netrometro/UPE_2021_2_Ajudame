@@ -12,10 +12,9 @@
     <header>
             <h1>Cursos</h1>
             <input class="searchMenu" type="search" name="search" placeholder="Procure um curso..." size="30" required>
-                <div>
-                    <input class="menu_add" type="image" src="img/add.png" alt="add"/>
-                    <input class="menu_login" type="image" src="img/user.png" alt="login"/>
-                </div>
+            <a class="menu_icon" href="/upe_20212_ajudame/cursosAdd.jsp"><img src="img/add.png" style="width:42px;height:42px;" alt="add"></a>
+            <a class="menu_icon" href="/upe_20212_ajudame/dashboard.jsp"><img src="img/user.png" style="width:42px;height:42px;" alt="login"></a>
+            <a class="menu_icon" href="/upe_20212_ajudame/ListaCursos.jsp"><img src="img/all.png" style="width:42px;height:42px;" alt="all"></a>
     </header>
 
 	<body>
@@ -24,18 +23,21 @@
             <div class="cards">
                 <div class="cards__item">
                     <h3>Java</h3>
-                    <img src="img/java.png" alt="Java">
+                    <img class="card_img" src="img/java.png" alt="Java">
                     <p class="card_description">Curso de java</p>
+                    <button type="button" class="verCurso">Ver curso</button>
                 </div>
                 <div class="cards__item">
                     <h3>Java</h3>
-                    <img src="img/java.png" alt="Java">
+                    <img class="card_img" src="img/java.png" alt="Java">
                     <p class="card_description">Curso de java</p>
+                    <button type="button" class="verCurso">Ver curso</button>
                 </div>
                 <div class="cards__item">
                     <h3>Java</h3> 
-                    <img src="img/java.png" alt="Java">
+                    <img class="card_img" src="img/java.png" alt="Java">
                     <p class="card_description">Curso de java</p>
+                    <button type="button" class="verCurso">Ver curso</button>
                 </div>
             </div>
         </div>
@@ -45,16 +47,15 @@
             <div class="cards">
                 <div class="cards__item">
                     <h3>Java</h3>
-                    <img src="img/java.png" alt="Java">
+                    <img class="card_img" src="img/java.png" alt="Java">
                     <p class="card_description">Curso de java</p>
+                    <button type="button" class="verCurso">Ver curso</button>
                 </div>
             </div>
 		</div>
 	</body>
 
     <footer>
-        <p>
             Dev by: Bruno_npc
-        </p>
     </footer>
 </html>

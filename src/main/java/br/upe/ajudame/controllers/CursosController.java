@@ -18,15 +18,6 @@ public class CursosController extends HttpServlet{
 		super();
 	}
 	
-	protected void doGet(
-			HttpServletRequest req, 
-			HttpServletResponse resp) 
-					throws ServletException, IOException 
-		{
-		resp.getWriter().append("Criando um Questionario para o projeto!");
-		}
-	
-	
 	protected void doPost(
 			HttpServletRequest req, 
 			HttpServletResponse resp) 
@@ -47,20 +38,4 @@ public class CursosController extends HttpServlet{
 			RequestDispatcher despachar = req.getRequestDispatcher("/Cursos.jsp");
 			despachar.forward(req, resp);
 		}
-	
-	protected void doPut(
-			HttpServletRequest req, 
-			HttpServletResponse resp) 
-					throws ServletException, IOException 
-		{
-			
-		}
-	
-	protected void doDelete(
-			HttpServletRequest req, 
-			HttpServletResponse resp) 
-					throws ServletException, IOException 
-	{
-		
-	}
 }
