@@ -6,6 +6,7 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private int ranking;
 	
 	public User() {}
 	
@@ -15,6 +16,15 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
+	
+	public User(String name, String email, String password, int  ranking) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.ranking = ranking;
+	}
+	
 
 	public int getId() {
 		return id;
@@ -39,6 +49,14 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}	
 
 }

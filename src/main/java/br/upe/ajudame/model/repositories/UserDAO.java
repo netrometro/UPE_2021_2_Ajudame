@@ -50,6 +50,31 @@ public class UserDAO {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		
+		ArrayList<User> lista = new ArrayList<User>();
+		while (rs.next()) {
+			User user = new User();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("name"));
+			user.setEmail(rs.getString("email"));
+			user.setRanking(rs.getInt("ranking"));
+			
+			lista.add(user);
+		}
+		
+		ps.close();
+		rs.close();
+		conn.close();
+		
+		return lista;
+	}
+	
+	public List<User> listOrderByRanking() throws ClassNotFoundException, SQLException {
+		Connection conn = postgres.connect();
+
+		String sql = "SELECT * FROM users ORDER BY ranking ASC  ";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
 		
 		ArrayList<User> lista = new ArrayList<User>();
 		while (rs.next()) {
@@ -57,6 +82,7 @@ public class UserDAO {
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
 			user.setEmail(rs.getString("email"));
+			user.setRanking(rs.getInt("ranking"));
 			
 			lista.add(user);
 		}
@@ -85,6 +111,7 @@ public class UserDAO {
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
 			user.setEmail(rs.getString("email"));
+			user.setRanking(rs.getInt("ranking"));
 			
 			lista.add(user);
 		}
@@ -114,6 +141,7 @@ public class UserDAO {
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
 			user.setEmail(rs.getString("email"));
+			user.setRanking(rs.getInt("ranking"));
 		}
 		
 		ps.close();
